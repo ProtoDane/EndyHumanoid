@@ -2,8 +2,12 @@
 #include <Wire.h>
 #include <Adafruit_PWMServoDriver.h>
 
+#include "servoHandler.h"
+
 TwoWire i2c = TwoWire(0);
 Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver(0x40, i2c);
+
+servoHandler servo = servoHandler(pwm);
 
 // put function declarations here:
 // int myFunction(int, int);
