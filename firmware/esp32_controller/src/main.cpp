@@ -7,7 +7,7 @@
 TwoWire i2c = TwoWire(0);
 Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver(0x40, i2c);
 
-servoHandler servo = servoHandler(pwm);
+servoHandler servo = servoHandler(&pwm);
 
 // put function declarations here:
 // int myFunction(int, int);
@@ -41,24 +41,25 @@ void loop() {
   //   pwm.setPWM(0, 0, i);
   //   delay(3);
   // }
-  pwm.writeMicroseconds(0, 1500); // Move to 0 degrees
-  pwm.writeMicroseconds(1, 1500);
-  pwm.writeMicroseconds(2, 1500);
-  pwm.writeMicroseconds(3, 1500);
-  pwm.writeMicroseconds(4, 1500);
-  pwm.writeMicroseconds(5, 1500);
-  pwm.writeMicroseconds(6, 1500);
-  pwm.writeMicroseconds(7, 1500);
-  pwm.writeMicroseconds(8, 1500);
-  pwm.writeMicroseconds(9, 1500);
-  pwm.writeMicroseconds(10, 1500);
-  pwm.writeMicroseconds(11, 1500);
-  pwm.writeMicroseconds(12, 1500);
-  pwm.writeMicroseconds(13, 1500);
-  pwm.writeMicroseconds(14, 1500);
-  pwm.writeMicroseconds(15, 1500);
-  delay(1000);
-  // pwm.writeMicroseconds(0, 2500); // Move to 180 degrees
+  // pwm.writeMicroseconds(0, 1500); // Move to 0 degrees
+  // pwm.writeMicroseconds(1, 1500);
+  // pwm.writeMicroseconds(2, 1500);
+  // pwm.writeMicroseconds(3, 1500);
+  // pwm.writeMicroseconds(4, 1500);
+  // pwm.writeMicroseconds(5, 1500);
+  // pwm.writeMicroseconds(6, 1500);
+  // pwm.writeMicroseconds(7, 1500);
+  // pwm.writeMicroseconds(8, 1500);
+  // pwm.writeMicroseconds(9, 1500);
+  // pwm.writeMicroseconds(10, 1500);
+  // pwm.writeMicroseconds(11, 1500);
+  // pwm.writeMicroseconds(12, 1500);
+  // pwm.writeMicroseconds(13, 1500);
+  // pwm.writeMicroseconds(14, 1500);
+  // pwm.writeMicroseconds(15, 1500);
+  // delay(1000);
+  legAngles idlePose = {15, -30, 30, 15, -15, 30, -30, -15, true};
+  servo.setServoCluster(&idlePose, 0.0);
   delay(1000);
 }
 

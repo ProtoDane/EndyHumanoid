@@ -6,6 +6,9 @@
 
 #include "config.h"
 
+#define ALL_SERVOS 0xFFFF
+#define LOWER_BODY 0b111111110001
+
 struct legAngles {
     double lth1;
     double lth2;
@@ -31,12 +34,16 @@ struct armAngles {
 class servoHandler {
 
     public:
-        servoHandler(Adafruit_PWMServoDriver& pwm);
+        servoHandler(Adafruit_PWMServoDriver *pwm);
 
-        void setServoCluster(legAngles *l, armAngles *a);
+        void setServoCluster(legAngles *l, float torsoAngle);
+        void setServoCluster(legAngles *l, armAngles *a, float torsoAngle);
+        void setServoCluster(const float *angles, int pinMask);
+
         void setServoDelay(legAngles *l, armAngles *a, int delayMs);
     
     private:
+        Adafruit_PWMServoDriver *_pwm;
         void setServo(int i, int us);
         int mapPulse(float angle, int min, int mid, int max);
 
