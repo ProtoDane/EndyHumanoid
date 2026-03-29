@@ -34,6 +34,7 @@ struct armAngles {
 class servoHandler {
 
     public:
+        servoHandler() : _pwm(nullptr) {};
         servoHandler(Adafruit_PWMServoDriver *pwm);
 
         void setServoCluster(legAngles *l, float torsoAngle);
@@ -46,7 +47,6 @@ class servoHandler {
         Adafruit_PWMServoDriver *_pwm;
         void setServo(int i, int us);
         int mapPulse(float angle, int min, int mid, int max);
-
 
 
 };
