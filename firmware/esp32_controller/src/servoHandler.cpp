@@ -39,6 +39,16 @@ void servoHandler::setServoCluster(const float *angles, int pinMask) {
     }
 }
 
+void servoHandler::setServoCluster(legAngles *l, armAngles *a, float lth4, float rth4, float torsoAngle) {
+    float angles[16] = {
+        torsoAngle, a->la1, a->la2, a->la3, 
+        l->lth1, l->lth2, l->lth3, (lth4 != NULL) ? lth4 : l->lth4,
+        l->rth1, l->rth2, l->rth3, (rth4 != NULL) ? rth4 : l->rth4,
+        a->ra1, a->ra2, a->ra3,
+    };
+    setServoCluster(angles, ALL_SERVOS);
+}
+
 // Private Functions
 void servoHandler::setServo(int i, int us) {
     _pwm->writeMicroseconds(i, us);

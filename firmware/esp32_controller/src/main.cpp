@@ -83,6 +83,14 @@ void gamepadProcessor(ControllerPtr gamepad) {
         action.actionCrouch(gamepad);
     } else if (ly < -AXIS_THRESHOLD || ry < -AXIS_THRESHOLD) {
         action.moveWalkFwd(gamepad);
+    } else if (lx > AXIS_THRESHOLD) {
+        action.moveSpin(gamepad, false);
+    } else if (lx < -AXIS_THRESHOLD) {
+        action.moveSpin(gamepad, true);
+    } else if ( rx > AXIS_THRESHOLD) {
+        action.moveStrafe(gamepad, false);
+    } else if (rx < -AXIS_THRESHOLD) {
+        action.moveStrafe(gamepad, true);
     } else {
         action.actionIdle();
     }

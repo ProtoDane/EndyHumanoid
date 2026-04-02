@@ -14,6 +14,8 @@ class actionHandler {
         void begin(servoHandler *servo);
 
         void moveWalkFwd(ControllerPtr gamepad);
+        void moveStrafe(ControllerPtr gamepad, bool dir);
+        void moveSpin(ControllerPtr gamepad, bool dir);
 
         void actionIdle();
         void actionCrouch(ControllerPtr gamepad);
